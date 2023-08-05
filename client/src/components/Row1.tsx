@@ -1,13 +1,15 @@
-import React from 'react'
 import DashboardBox from './DashboardBox';
+import { useGetKpisQuery } from '@/state/api';
 
-const Row1 = () => {
+const Row1 = () => { 
+    const { data } = useGetKpisQuery();
+
   return (
-    <div>
+    <>
       <DashboardBox gridArea="a">Dashboard</DashboardBox>
       <DashboardBox gridArea="b">Dashboard</DashboardBox>
       <DashboardBox gridArea="c">Dashboard</DashboardBox>
-    </div>
+    </>
   );
 }
 
