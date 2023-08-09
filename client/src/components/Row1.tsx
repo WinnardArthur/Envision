@@ -11,6 +11,7 @@ import {
   Tooltip,
 } from "recharts";
 import { useTheme } from "@mui/material";
+import BoxHeader from "./BoxHeader";
 
 const Row1 = () => {
   const { palette } = useTheme();
@@ -21,7 +22,7 @@ const Row1 = () => {
       data &&
       data[0].monthlyData.map(({ month, revenue, expenses }) => {
         return {
-          name: month.substring(0, 3),
+          name: month.charAt(0).toUpperCase().concat(month.substring(1, 3)),
           revenue: revenue,
           expenses: expenses,
         };
@@ -32,6 +33,11 @@ const Row1 = () => {
   return (
     <>
       <DashboardBox gridArea="a">
+        <BoxHeader
+          title="Revenue & Expenses"
+          subtitle="Upper line is revenue & lower line is expenses"
+          sideText="+12%"
+        />
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             width={500}
