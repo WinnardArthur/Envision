@@ -1,5 +1,6 @@
-import { kpis } from "./data/index.js";
+import { kpis, products } from "./data/index.js";
 import KPI from "./models/kpi.js";
+import Product from "./models/product.js";
 
 function seedDB() {
   KPI.deleteMany()
@@ -11,6 +12,19 @@ function seedDB() {
         })
         .catch((error) => {
           console.log("Failed to load KPIs: ", error);
+        });
+    })
+    .catch((error) => console.log("An error occured: ", error));
+
+  Product.deleteMany()
+    .then(() => {
+      console.log("Unmounting Products...");
+      Product.insertMany(products)
+        .then(() => {
+          console.log("Products loaded...");
+        })
+        .catch((error) => {
+          console.log("Failed to load Products: ", error);
         });
     })
     .catch((error) => console.log("An error occured: ", error));

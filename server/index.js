@@ -6,7 +6,8 @@ import morgan from "morgan";
 import cors from "cors";
 import mongoose from "mongoose";
 // Routes
-import KpiRoutes from './routes/kpi.js';
+import KpiRoutes from "./routes/kpi.js";
+import productRoutes from "./routes/product.js";
 import seedDB from "./seedDB.js";
 
 dotenv.config();
@@ -22,7 +23,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Routes
-app.use('/kpi', KpiRoutes);
+app.use("/kpi", KpiRoutes);
+app.use("/product", productRoutes);
 
 // MongoDB Database Configuration
 mongoose
@@ -31,8 +33,8 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(async () => {
-      app.listen(PORT, () => console.log(`Server running... Port: ${PORT}`));
+    app.listen(PORT, () => console.log(`Server running... Port: ${PORT}`));
 
-      seedDB();
+    seedDB();
   })
   .catch((error) => console.log(`Error Connecting Database: ${error}`));

@@ -21,7 +21,8 @@ import BoxHeader from "./BoxHeader";
 const Row1 = () => {
   const { palette } = useTheme();
   const { data } = useGetKpisQuery();
-  console.log("data", data);
+
+  // Revenue & Expenses data
   const revenueExpenses = useMemo(() => {
     return (
       data &&
@@ -35,6 +36,7 @@ const Row1 = () => {
     );
   }, [data]);
 
+  // Revenue & Profit data
   const revenueProfit = useMemo(() => {
     return (
       data &&
@@ -48,6 +50,7 @@ const Row1 = () => {
     );
   }, [data]);
 
+  // Revenue data
   const revenue = useMemo(() => {
     return (
       data &&
