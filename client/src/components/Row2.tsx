@@ -4,21 +4,31 @@ import { useGetKpisQuery, useGetProductsQuery } from "@/state/api";
 import BoxHeader from "./BoxHeader";
 import {
   CartesianGrid,
+  Cell,
   Line,
   LineChart,
+  Pie,
+  PieChart,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
-import { useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
+import FlexBetween from "./FlexBetween";
+
+const pieData = [
+  { name: "Group A", value: 600 },
+  { name: "Group B", value: 400 },
+];
 
 const Row2 = () => {
   const { data: operationalData } = useGetKpisQuery();
   const { data: productData } = useGetProductsQuery();
   const { palette } = useTheme();
 
-  console.log('op', operationalData)
+  const pieColors = [palette.primary[800], palette.primary[300]];
+
   // Operational Expenses Data
   const operationalExpenses = useMemo(() => {
     return (
@@ -89,7 +99,49 @@ const Row2 = () => {
           </LineChart>
         </ResponsiveContainer>
       </DashboardBox>
-      <DashboardBox gridArea="e">Dashboard</DashboardBox>
+
+      <DashboardBox gridArea="e">
+        <BoxHeader title="Campaigns & Targets" sideText="+7%" />
+        <FlexBetween mt=".25rem" gap="1.5rem" pr="1rem">
+          <PieChart
+            width={110}
+            height={100}
+            margin={{ top: 0, right: -10, left: 10, bottom: 0 }}
+          >
+            <Pie
+              data={pieData}
+              innerRadius={18}
+              outerRadius={38}
+              paddingAngle={2}
+              dataKey="value"
+              stroke="none"
+            >
+              {pieData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={pieColors[index]} />
+              ))}
+            </Pie>
+          </PieChart>
+          <Box ml="-0.7rem" flexBasis="40%" textAlign="center">
+            <Typography variant="h5">Target Sales</Typography>
+            <Typography m=".3rem 0" variant="h3" color={palette.primary[300]}>
+              128
+            </Typography>
+            <Typography variant="h6">
+              Financial aim of the campaign desired
+            </Typography>
+          </Box>
+          <Box ml="-0.7rem" flexBasis="40%" textAlign="center">
+            <Typography variant="h5">Losses in Revenue</Typography>
+            <Typography variant="h6">Losses are down 18%</Typography>
+            <Typography variant="h5" mt=".4rem">
+              Profit Margins
+            </Typography>
+            <Typography variant="h6">
+              Margins are up by 33% from last month
+            </Typography>
+          </Box>
+        </FlexBetween>
+      </DashboardBox>
       <DashboardBox gridArea="f">Dashboard</DashboardBox>
     </>
   );
