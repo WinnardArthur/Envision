@@ -8,6 +8,7 @@ import mongoose from "mongoose";
 // Routes
 import KpiRoutes from "./routes/kpi.js";
 import productRoutes from "./routes/product.js";
+import transactionRoutes from './routes/transaction.js';
 import seedDB from "./seedDB.js";
 
 dotenv.config();
@@ -25,6 +26,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Routes
 app.use("/kpi", KpiRoutes);
 app.use("/product", productRoutes);
+app.use("/transaction", transactionRoutes);
 
 // MongoDB Database Configuration
 mongoose
