@@ -130,7 +130,7 @@ const Row3 = () => {
       <DashboardBox gridArea="h">
         <BoxHeader
           title="Recent Orders"
-          sideText={`${transactionData?.length} lates transactions`}
+          sideText={`${transactionData?.length} latest transactions`}
         />
         <Box
           mt="1rem"

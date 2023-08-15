@@ -9,9 +9,14 @@ const Navbar = () => {
   const [selected, setSelected] = useState("dashboard");
 
   return (
-    <FlexBetween mb="0.25rem" p="0.5rem 0rem" color={palette.grey[300]}>
-      <FlexBetween gap="0.75rem">
-        <PixIcon sx={{ fontSize: "28px" }} />
+    <FlexBetween mb="1rem" p="0.5rem 0rem" color={palette.grey[300]}>
+      <FlexBetween
+        component={Link}
+        to="/"
+        gap="0.5rem"
+        sx={{ textDecoration: "none" }}
+      >
+        <PixIcon sx={{ fontSize: "28px", color: "white" }} />
         <Typography variant="h4" fontSize="16px">
           Finalytics
         </Typography>
