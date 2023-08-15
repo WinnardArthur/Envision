@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import DashboardBox from "./DashboardBox";
 import {
   useGetKpisQuery,
@@ -25,12 +25,8 @@ const Row3 = () => {
   const pieChartData = useMemo(() => {
     if (kpiData) {
       const totalExpenses = kpiData[0].totalExpenses;
-      console.log("totalExpenses", kpiData[0]);
       return Object.entries(kpiData[0].expensesByCategory).map(
         ([key, value]) => {
-          console.log("key", key, "value", value);
-          console.log("ex", totalExpenses);
-
           return [
             {
               name: key,

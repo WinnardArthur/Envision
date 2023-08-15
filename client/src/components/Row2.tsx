@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import DashboardBox from "./DashboardBox";
 import { useGetKpisQuery, useGetProductsQuery } from "@/state/api";
 import BoxHeader from "./BoxHeader";
