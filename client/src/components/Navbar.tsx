@@ -10,17 +10,14 @@ const Navbar = () => {
 
   return (
     <FlexBetween mb="1rem" p="0.5rem 0rem" color={palette.grey[300]}>
-      <FlexBetween
-        component={Link}
-        to="/"
-        gap="0.5rem"
-        sx={{ textDecoration: "none" }}
-      >
-        <PixIcon sx={{ fontSize: "28px", color: "white" }} />
-        <Typography variant="h4" fontSize="16px">
-          Finalytics
-        </Typography>
-      </FlexBetween>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <FlexBetween gap="0.5rem" sx={{ textDecoration: "none" }}>
+          <PixIcon sx={{ fontSize: "28px", color: "white" }} />
+          <Typography variant="h4" fontSize="16px">
+            Finalytics
+          </Typography>
+        </FlexBetween>
+      </Link>
 
       <FlexBetween gap="2rem">
         <Box sx={{ "&:hover": { color: palette.primary[100] } }}>
