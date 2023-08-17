@@ -11,6 +11,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { GridCellParams } from "@mui/x-data-grid/models";
 import FlexBetween from "./FlexBetween";
 import { Cell, Pie, PieChart } from "recharts";
+import Loader from "./Loader";
 
 const Row3 = () => {
   const { data: transactionData } = useGetTransactionsQuery();
@@ -97,34 +98,38 @@ const Row3 = () => {
           title="List of Products"
           sideText={`${productData?.length} products`}
         />
-        <Box
-          mt=".5rem"
-          p="0 0.5rem"
-          height="75%"
-          sx={{
-            "& .MuiDataGrid-root": {
-              color: palette.grey[300],
-              border: "none",
-            },
-            "& .MuiDataGrid-cell": {
-              borderBottom: `1px solid ${palette.grey[800]} !important`,
-            },
-            "& .MuiDataGrid-columnHeaders": {
-              borderBottom: `1px solid ${palette.grey[800]} !important`,
-            },
-            "& .MuiDataGrid-columnSeparator": {
-              visibility: `hidden`,
-            },
-          }}
-        >
-          <DataGrid
-            rows={productData || []}
-            columns={productColumns}
-            columnHeaderHeight={25}
-            rowHeight={35}
-            hideFooter={true}
-          />
-        </Box>
+        {productData ? (
+          <Box
+            mt=".5rem"
+            p="0 0.5rem"
+            height="75%"
+            sx={{
+              "& .MuiDataGrid-root": {
+                color: palette.grey[300],
+                border: "none",
+              },
+              "& .MuiDataGrid-cell": {
+                borderBottom: `1px solid ${palette.grey[800]} !important`,
+              },
+              "& .MuiDataGrid-columnHeaders": {
+                borderBottom: `1px solid ${palette.grey[800]} !important`,
+              },
+              "& .MuiDataGrid-columnSeparator": {
+                visibility: `hidden`,
+              },
+            }}
+          >
+            <DataGrid
+              rows={productData || []}
+              columns={productColumns}
+              columnHeaderHeight={25}
+              rowHeight={35}
+              hideFooter={true}
+            />
+          </Box>
+        ) : (
+          <Loader size={70} />
+        )}
       </DashboardBox>
 
       <DashboardBox gridArea="h">
@@ -132,34 +137,38 @@ const Row3 = () => {
           title="Recent Orders"
           sideText={`${transactionData?.length} latest transactions`}
         />
-        <Box
-          mt="1rem"
-          p="0 0.5rem"
-          height="80%"
-          sx={{
-            "& .MuiDataGrid-root": {
-              color: palette.grey[300],
-              border: "none",
-            },
-            "& .MuiDataGrid-cell": {
-              borderBottom: `1px solid ${palette.grey[800]} !important`,
-            },
-            "& .MuiDataGrid-columnHeaders": {
-              borderBottom: `1px solid ${palette.grey[800]} !important`,
-            },
-            "& .MuiDataGrid-columnSeparator": {
-              visibility: `hidden`,
-            },
-          }}
-        >
-          <DataGrid
-            rows={transactionData || []}
-            columns={transactionColumns}
-            columnHeaderHeight={25}
-            rowHeight={35}
-            hideFooter={true}
-          />
-        </Box>
+        {transactionData ? (
+          <Box
+            mt="1rem"
+            p="0 0.5rem"
+            height="80%"
+            sx={{
+              "& .MuiDataGrid-root": {
+                color: palette.grey[300],
+                border: "none",
+              },
+              "& .MuiDataGrid-cell": {
+                borderBottom: `1px solid ${palette.grey[800]} !important`,
+              },
+              "& .MuiDataGrid-columnHeaders": {
+                borderBottom: `1px solid ${palette.grey[800]} !important`,
+              },
+              "& .MuiDataGrid-columnSeparator": {
+                visibility: `hidden`,
+              },
+            }}
+          >
+            <DataGrid
+              rows={transactionData || []}
+              columns={transactionColumns}
+              columnHeaderHeight={25}
+              rowHeight={35}
+              hideFooter={true}
+            />
+          </Box>
+        ) : (
+          <Loader size={80} />
+        )}
       </DashboardBox>
 
       <DashboardBox gridArea="i">

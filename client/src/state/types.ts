@@ -42,7 +42,7 @@ export interface GerProductResponse {
   __v: number;
   price: number;
   expense: number;
-  transactions: Array<String>;
+  transactions: Array<string>;
   createdAt: string;
   updatedAt: string;
 }
@@ -53,7 +53,7 @@ export interface GetTransactionsResponse {
   __v: number;
   buyer: number;
   amount: number;
-  productIds: Array<String>;
+  productIds: Array<string>;
   createdAt: string;
   updatedAt: string;
 }
